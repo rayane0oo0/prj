@@ -9,7 +9,7 @@ public class HibernateUtil{
 
     static{
         sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        System.out.println("✅SessionFactory demarree");
+        System.out.println("SessionFactory demarree");
     }
 
     public static SessionFactory getSessionFactory() {
@@ -21,13 +21,13 @@ public class HibernateUtil{
             sessionFactory.close();
         }
         sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        System.out.println("🔄SessionFactory reinitialisee");
+        System.out.println("SessionFactory reinitialisee");
     }
 
     public static void shutdown() {
         if (sessionFactory != null) {
             sessionFactory.close();
-            System.out.println("👋SessionFactory fermee");
+            System.out.println("SessionFactory fermee");
         }
     }
 }
