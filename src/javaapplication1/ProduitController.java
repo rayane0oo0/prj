@@ -88,7 +88,7 @@ public class ProduitController implements Initializable {
             viderFormulaire();
             chargerListe();
         } else {
-            afficherErreur("Erreur", "Code déjà existant");
+            afficherErreur("Erreur", "Code deja existant");
         }
     }
     
@@ -96,7 +96,7 @@ public class ProduitController implements Initializable {
     private void handleModifier() {
         Produit selection = tableProduits.getSelectionModel().getSelectedItem();
         if (selection == null) {
-            afficherErreur("Erreur", "Sélectionnez un produit");
+            afficherErreur("Erreur", "Selectionnez un produit");
             return;
         }
         if (!formulaireEstValide()) return;
@@ -108,7 +108,7 @@ public class ProduitController implements Initializable {
         selection.setDisponibilite(chkDispo.isSelected());
         
         if (service.modifierProduit(selection)) {
-            afficherMessage("Succès", "Produit modifié !");
+            afficherMessage("Succes", "Produit modifie !");
             viderFormulaire();
             chargerListe();
         } else {
@@ -120,7 +120,7 @@ public class ProduitController implements Initializable {
     private void handleSupprimer() {
         Produit selection = tableProduits.getSelectionModel().getSelectedItem();
         if (selection == null) {
-            afficherErreur("Erreur", "Sélectionnez un produit");
+            afficherErreur("Erreur", "Selectionnez un produit");
             return;
         }
         
@@ -130,7 +130,7 @@ public class ProduitController implements Initializable {
         
         if (confirmation.showAndWait().get() == ButtonType.OK) {
             if (service.supprimerProduit(selection)) {
-                afficherMessage("Succès", "Produit supprimé");
+                afficherMessage("Succes", "Produit supprime");
                 viderFormulaire();
                 chargerListe();
             } else {
