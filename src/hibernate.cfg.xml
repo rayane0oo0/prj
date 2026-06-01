@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!--
+            ✅ mysql-connector-java-5.1.49 → ancien driver (com.mysql.jdbc.Driver)
+            Si tu passes au connector 8.x, change vers com.mysql.cj.jdbc.Driver
+        -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <!--
+            ✅ MySQL 8 avec connector 5.1 : ajouter useSSL=false + allowPublicKeyRetrieval=true
+        -->
+        <property name="connection.url">
+            jdbc:mysql://localhost:3306/gestion_produits?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
+        </property>
+
+        <property name="connection.username">root</property>
+        <!-- ⚠️ Remplace "secret" par ton vrai mot de passe -->
+        <property name="connection.password">secret</property>
+
+        <!--
+            ✅ MySQL5InnoDBDialect : compatible Hibernate 4.3 + MySQL 8
+               (MySQL8Dialect n'existe pas dans Hibernate 4.3 !)
+        -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <property name="connection.pool_size">5</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+
+        <!--
+            validate : vérifie que la BDD correspond au modèle (ne modifie rien)
+            update   : crée/met à jour les tables automatiquement
+        -->
+        <property name="hbm2ddl.auto">validate</property>
+
+        <property name="current_session_context_class">thread</property>
+
+        <mapping class="model.Produit"/>
+
+    </session-factory>
+</hibernate-configuration>

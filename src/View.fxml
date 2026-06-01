@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaapplication1.ProduitController">
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+            <Label text="Rechercher :" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="txtRecherche" promptText="Saisir un libellé ou type..." prefWidth="250"/>
+        </HBox>
+    </top>
+    <left>
+        <VBox spacing="12" prefWidth="300">
+            <padding><Insets top="10" right="15" bottom="10" left="15"/></padding>
+            <Label text="Formulaire Produit" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            
+            <Label text="Code :"/>
+            <TextField fx:id="txtCode"/>
+            
+            <Label text="Libellé :"/>
+            <TextField fx:id="txtLibelle"/>
+            
+            <Label text="Type :"/>
+            <ComboBox fx:id="comboType" prefWidth="270"/>
+            
+            <Label text="Quantité en stock :"/>
+            <TextField fx:id="txtQuantite"/>
+            
+            <CheckBox fx:id="chkDispo" text="Disponible en vente"/>
+            
+            <HBox spacing="8" alignment="CENTER">
+                <Button text="Ajouter" onAction="#handleAjouter" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+                <Button text="Modifier" onAction="#handleModifier" style="-fx-background-color: #f1c40f; -fx-text-fill: white;"/>
+                <Button text="Supprimer" onAction="#handleSupprimer" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                <Button text="Actualiser" onAction="#handleActualiser"/>
+            </HBox>
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="tableProduits">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colCode" text="Code" prefWidth="80"/>
+                <TableColumn fx:id="colLibelle" text="Libellé" prefWidth="150"/>
+                <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                <TableColumn fx:id="colQuantite" text="Quantité" prefWidth="80"/>
+                <TableColumn fx:id="colDispo" text="Disponibilité" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
